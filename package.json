@@ -1,0 +1,31 @@
+{
+  "name": "fluxocket",
+  "version": "1.0.0",
+  "description": "A flux dispatcher which syncs stores over sockets",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhinavrastogi/fluxocket.git"
+  },
+  "keywords": [
+    "flux",
+    "socket.io",
+    "sync",
+    "stores"
+  ],
+  "author": "r.abhinav@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abhinavrastogi/fluxocket/issues"
+  },
+  "homepage": "https://github.com/abhinavrastogi/fluxocket#readme",
+  "dependencies": {
+    "flux": "^2.0.3"
+  }
+}
