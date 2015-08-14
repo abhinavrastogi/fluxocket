@@ -1,0 +1,21 @@
+var express = require('express');
+var app = express();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+var fs = require('fs');
+
+app.use(express.static('public'));
+
+app.get('*', function(req, res){
+	res.send(fs.readFileSync('index.html', { encoding: 'utf8' }));
+});
+
+io.on('connection', function(socket){
+	socket.on('flux_action', function(payload) {
+		socket.broadcast.emit('flux_action', payload);
+	});
+});
+
+http.listen(3000, function(){
+	console.log('listening on *:3000');
+});
