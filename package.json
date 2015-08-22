@@ -26,7 +26,8 @@
   },
   "homepage": "https://github.com/abhinavrastogi/fluxocket#readme",
   "dependencies": {
-    "flux": "^2.0.3"
+    "flux": "^2.0.3",
+    "react": "^0.13.3"
   },
   "devDependencies": {
     "babel": "^5.8.21"

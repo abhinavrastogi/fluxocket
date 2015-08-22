@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<title>Fluxocket Maps</title>
+	<style>
+		* { margin: 0; padding: 0; box-sizing: border-box; }
+		html, body { font: 14px Helvetica, Arial; height: 100% }
+		#map { height: 100%; }
+	</style>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgIfHrVG8S8JSvtSjYEZPS0X013Ad0lFs"></script>
+</head>
+<body>
+	<div id="map"></div>
+	<div id="container"></div>
+	<script type="text/javascript">
+		var map = new google.maps.Map(document.getElementById('map'), {
+			center: {lat: -34.397, lng: 150.644},
+			zoom: 8,
+			disableDefaultUI: true
+		});
+	</script>
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/bundle.js"></script>
+</body>
+</html>

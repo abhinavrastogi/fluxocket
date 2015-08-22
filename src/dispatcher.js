@@ -14,7 +14,9 @@ Dispatcher.setSocket = function(_socket) {
 
 Dispatcher.dispatch = function(payload, broadcast = true) {
 	if(broadcast) {
-		Dispatcher._socket.emit('flux_action', payload);
+		if(Dispatcher._socket) {
+			Dispatcher._socket.emit('flux_action', payload);
+		}
 	}
 
 	return _dispatch(payload);
