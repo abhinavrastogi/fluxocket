@@ -1,5 +1,5 @@
 import React from 'react';
-import Dispatcher from '../../../index.js';
+import Dispatcher from 'fluxocket';
 import Store from './Store.js';
 
 Dispatcher.register(function(payload) {
