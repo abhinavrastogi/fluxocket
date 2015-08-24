@@ -3,6 +3,12 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var fs = require('fs');
+var elasticsearch = require('elasticsearch');
+
+var client = new elasticsearch.Client({
+	host: 'localhost:9200',
+	log: 'trace'
+});
 
 app.use(express.static('public'));
 
@@ -13,6 +19,14 @@ app.get('*', function(req, res){
 io.on('connection', function(socket){
 	socket.on('flux_action', function(payload) {
 		socket.broadcast.emit('flux_action', payload);
+
+		client.create({
+			index: 'fluxocket-chats',
+			type: 'chats',
+			body: payload
+		}, function (error, response) {
+			console.log(error, response);
+		});
 	});
 });
 

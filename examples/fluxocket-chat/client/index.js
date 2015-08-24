@@ -23,6 +23,17 @@ let Chat = React.createClass({
 		let socket = io();
 		Dispatcher.setSocket(socket);
 	},
+	componentDidMount() {
+		var username = '';
+
+		do {
+			username = prompt('Enter name:');
+		} while (!username.length);
+
+		this.setState({
+			userName: username
+		});
+	},
 	change() {
 		this.setState({
 			messages: Store.get()
@@ -30,8 +41,9 @@ let Chat = React.createClass({
 	},
 	sendMessage(e) {
 		e.preventDefault();
-		let from = this.refs['name'].getDOMNode().value;
+		let from = this.state.userName;
 		let text = this.refs['msg'].getDOMNode().value;
+		let timestamp = Date.now();
 
 		if(!from.length || !text.length) {
 			alert('Name and message is required');
@@ -40,13 +52,10 @@ let Chat = React.createClass({
 
 		Dispatcher.dispatch({
 			action: 'add_msg',
-			data: { from, text }
+			data: { from, text, timestamp }
 		});
 
 		this.refs['form'].getDOMNode().reset();
-	},
-	inputChange() {
-		this.setState({ userName: this.refs['name'].getDOMNode().value })
 	},
 	render() {
 		return <div>
@@ -56,7 +65,6 @@ let Chat = React.createClass({
 				})}
 			</ul>
 			<form className='form' ref='form'>
-				<input ref='name' value={this.state.userName} onChange={this.inputChange} className='name' placeholder='name' autoComplete='off' />
 				<input autoComplete="off" className='msg' placeholder='message' ref='msg' />
 				<button onClick={this.sendMessage}>Send</button>
 			</form>

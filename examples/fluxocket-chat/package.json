@@ -19,6 +19,7 @@
   "author": "r.abhinav@gmail.com",
   "license": "ISC",
   "dependencies": {
+    "elasticsearch": "^6.1.0",
     "express": "^4.13.3",
     "object-assign": "^3.0.0",
     "socket.io": "^1.3.6"
